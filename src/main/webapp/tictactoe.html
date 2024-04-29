@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="tictactoe.css">
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div id="mode-selection">
+        <h2>Select Mode:</h2>
+        <button onclick="startGame('player')">Player vs Player</button>
+        <button onclick="startGame('ai')">Player vs AI</button>
+    </div>
+    <div id="player-names" style="display: none;">
+        <input type="text" id="player1Name" placeholder="Player 1 Name">
+        <input type="text" id="player2Name" placeholder="Player 2 Name">
+        <button onclick="initializePlayers()">Start Game</button>
+    </div>
+    <div id="board" style="display: none;">
+        <div class="cell" onclick="makeMove(0)"></div>
+        <div class="cell" onclick="makeMove(1)"></div>
+        <div class="cell" onclick="makeMove(2)"></div>
+        <div class="cell" onclick="makeMove(3)"></div>
+        <div class="cell" onclick="makeMove(4)"></div>
+        <div class="cell" onclick="makeMove(5)"></div>
+        <div class="cell" onclick="makeMove(6)"></div>
+        <div class="cell" onclick="makeMove(7)"></div>
+        <div class="cell" onclick="makeMove(8)"></div>
+    </div>
+    <div id="message"></div>
+    <button id="goToHomePageBtn" style="display: none;" onclick="goToHomePage()">Go to Home Page</button>
+
+    <script src="tictactoe.js"></script>
+</body>
+</html>

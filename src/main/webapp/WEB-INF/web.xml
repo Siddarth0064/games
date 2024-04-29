@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>j2eetictactoe</display-name>
+  
+ 
+  <!-- Other configurations -->
+    
+    <resource-ref>
+        <description>MySQL Database Connection</description>
+        <res-ref-name>jdbc/tictactoe</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    
+    <!-- Other configurations -->
+ 
+ 
+ 
+
+     <servlet>
+       <servlet-name>LoginUser</servlet-name>
+       <servlet-class>com.tictactoe.useractivity.UserLogin</servlet-class>  
+       
+      <!-- <init-param>
+         <param-name>url</param-name>
+         <param-value>jdbc:mysql://localhost:3306/students</param-value>
+     </init-param>
+     
+     <init-param>
+         <param-name>username</param-name>
+         <param-value>root</param-value>
+     </init-param>
+     
+     <init-param>
+         <param-name>password</param-name>
+         <param-value>admin</param-value>
+     </init-param>   --> 
+         
+     </servlet>  
+     <servlet-mapping>
+       <servlet-name>LoginUser</servlet-name>
+       <url-pattern>/login</url-pattern>
+     </servlet-mapping>
+     
+     
+     
+     <servlet>
+       <servlet-name>NewUser</servlet-name>
+       <servlet-class>com.tictactoe.useractivity.NewAccount</servlet-class>  
+     </servlet>  
+     <servlet-mapping>
+       <servlet-name>NewUser</servlet-name>
+       <url-pattern>/newaccount</url-pattern>
+     </servlet-mapping>
+     
+      
+     <servlet>
+       <servlet-name>SendOtps</servlet-name>
+       <servlet-class>com.tictactoe.useractivity.SendOtp</servlet-class>  
+     </servlet>  
+     <servlet-mapping>
+       <servlet-name>SendOtps</servlet-name>
+       <url-pattern>/sendotps</url-pattern>
+     </servlet-mapping>
+     
+     
+     
+     
+     <!--
+     
+     
+      <servlet>
+       <servlet-name>StudentLogin</servlet-name>
+       <servlet-class>com.jee.login.Validation</servlet-class>
+      -->
+       
+      <!--    <init-param>
+         <param-name>url</param-name>
+         <param-value>jdbc:mysql://localhost:3306/students</param-value>
+     </init-param>
+     
+     <init-param>
+         <param-name>username</param-name>
+         <param-value>root</param-value>
+     </init-param>
+     
+     <init-param>
+         <param-name>password</param-name>
+         <param-value>admin</param-value>
+     </init-param>
+       -->
+   <!--  
+     </servlet>       
+     <servlet-mapping>
+       <servlet-name>StudentLogin</servlet-name>
+       <url-pattern>/login</url-pattern>
+     </servlet-mapping>
+     
+     
+      
+      <servlet>
+       <servlet-name>Drive</servlet-name>
+       <servlet-class>com.jee.login.Drives</servlet-class>
+     -->
+       
+     <!--   <init-param>
+         <param-name>url</param-name>
+         <param-value>jdbc:mysql://localhost:3306/students</param-value>
+     </init-param>
+     
+     <init-param>
+         <param-name>username</param-name>
+         <param-value>root</param-value>
+     </init-param>
+     
+     <init-param>
+         <param-name>password</param-name>
+         <param-value>admin</param-value>
+     </init-param>
+        --> 
+   <!--  
+     </servlet>    
+     <servlet-mapping>
+       <servlet-name>Drive</servlet-name>
+       <url-pattern>/drives</url-pattern>
+     </servlet-mapping>
+     
+
+      <servlet>
+       <servlet-name>Eligiable</servlet-name>
+       <servlet-class>com.jee.login.EligiableDrives</servlet-class>
+  -->
+   <!--    
+        <init-param>
+         <param-name>url</param-name>
+         <param-value>jdbc:mysql://localhost:3306/students</param-value>
+     </init-param>
+     
+     <init-param>
+         <param-name>username</param-name>
+         <param-value>root</param-value>
+     </init-param>
+     
+     <init-param>
+         <param-name>password</param-name>
+         <param-value>admin</param-value>
+     </init-param>
+  -->       
+   <!--  
+    </servlet>    
+     <servlet-mapping>
+       <servlet-name>Eligiable</servlet-name>
+       <url-pattern>/eligiable</url-pattern>
+     </servlet-mapping>
+     
+     <servlet>
+       <servlet-name>ServletOne</servlet-name>
+       <servlet-class>com.j2ee.servlet.first.ServletOne</servlet-class>
+     </servlet>    
+     <servlet-mapping>
+       <servlet-name>ServletOne</servlet-name>
+       <url-pattern>/servletone</url-pattern>
+     </servlet-mapping>
+     
+     
+     <servlet>
+       <servlet-name>ServletTwo</servlet-name>
+       <servlet-class>com.j2ee.servlet.first.ServletTwo</servlet-class>
+     </servlet>    
+     <servlet-mapping>
+       <servlet-name>ServletTwo</servlet-name>
+       <url-pattern>/servlettwo</url-pattern>
+     </servlet-mapping>
+     
+     
+     <servlet>
+       <servlet-name>ServletThree</servlet-name>
+       <servlet-class>com.j2ee.servlet.first.ServletThree</servlet-class>
+     </servlet>    
+     <servlet-mapping>
+       <servlet-name>ServletThree</servlet-name>
+       <url-pattern>/servletthree</url-pattern>
+     </servlet-mapping>
+  
+  -->
+  
+  
+  
+  
+  
+</web-app>

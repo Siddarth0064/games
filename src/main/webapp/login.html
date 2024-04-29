@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Game World</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Include Font Awesome for icons -->
+<style>
+    body {
+        text-align: center;
+        background-color: #800080; /* Purple background color */
+        font-family: Arial, sans-serif; /* Change to your preferred font */
+        color: white; /* Text color */
+    }
+    h3 {
+        color: #fff; /* Change to your preferred text color */
+    }
+    .login-box {
+        margin: 0 auto;
+        width: 300px; /* Adjust width as needed */
+        background-color: #fff; /* Change to your preferred form background color */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333; /* Change to your preferred label color */
+        text-align: left;
+    }
+    input[type="text"],
+    input[type="password"] {
+        width: calc(100% - 32px); /* Adjusted width to accommodate icon */
+        padding: 8px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    .password-toggle {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .create-account, .reset-password {
+        margin-top: 10px;
+        text-align: right;
+    }
+    .create-account a {
+        color: #f00; /* Change to your preferred color */
+    }
+ 
+    /* Existing styles */
+    .create-account {
+        margin-top: 10px;
+        text-align: right;
+        color: black; /* Add this line to change the text color to black */
+    }
+    .reset-password {
+        margin-top: 10px;
+        text-align: right;
+        color: black; /* Add this line to change the text color to black */
+    }
+
+    
+</style>
+</head>
+<body>
+    <h3>WELCOME TO GAMES WORLD !</h3>
+    <div class="login-box">
+        <h3>Login</h3>
+        <form action="login">
+           <label for="email">UserName:</label>
+           <input type="text" id="email" name="email"><br>
+          
+           <label for="password" style="position: relative;"> <!-- Added relative positioning for the label -->
+               Password:
+               <input type="password" id="password" name="password">
+               <span class="password-toggle" onclick="togglePassword()">
+                   <i class="fas fa-eye" id="passwordToggleIcon"></i> <!-- Font Awesome eye icon -->
+               </span>
+           </label>
+          
+           <input type="submit" value="Submit">
+        </form>
+        <p class="create-account">Don't have an account? <a href="newaccount.html">Create one here</a>.</p>
+        <p class="reset-password">Forgot your password? <a href="">Reset it here</a>.</p>
+    </div>
+
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById("password");
+            var passwordToggleIcon = document.getElementById("passwordToggleIcon");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggleIcon.classList.remove("fa-eye");
+                passwordToggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                passwordToggleIcon.classList.remove("fa-eye-slash");
+                passwordToggleIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #game-container {
+            position: relative;
+            width: 600px;
+            height: 200px;
+            background-color: #f7f7f7;
+            border: 2px solid #333;
+            overflow: hidden;
+        }
+        #dino {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-image: url('dino/dino.png'); /* Path to your dino image */
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: transform 0.2s;
+        }
+        .obstacle {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #f00;
+            animation: obstacle-animation 2s infinite linear;
+        }
+        @keyframes obstacle-animation {
+            from { left: 600px; }
+            to { left: -20px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="dino"></div>
+    </div>
+
+    <script>
+        const dino = document.getElementById('dino');
+        const gameContainer = document.getElementById('game-container');
+
+        let isJumping = false;
+        let isGameOver = false;
+
+        // Function to make the dinosaur jump
+        function jump() {
+            if (!isJumping) {
+                isJumping = true;
+                dino.style.transform = 'translateY(-50px)';
+                setTimeout(() => {
+                    dino.style.transform = 'translateY(0)';
+                    isJumping = false;
+                }, 200);
+            }
+        }
+
+        // Function to create random obstacles
+        function createObstacle() {
+            if (!isGameOver) {
+                const obstacle = document.createElement('div');
+                obstacle.classList.add('obstacle');
+                obstacle.style.left = '600px';
+                gameContainer.appendChild(obstacle);
+                
+                obstacle.addEventListener('animationiteration', () => {
+                    if (!isGameOver) {
+                        const dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom'));
+                        const obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
+                        const obstacleBottom = parseInt(window.getComputedStyle(obstacle).getPropertyValue('bottom'));
+
+                        if (obstacleLeft < 100 && obstacleLeft > 0 && dinoBottom <= obstacleBottom) {
+                            endGame();
+                        }
+                    }
+                });
+            }
+        }
+
+        // Function to end the game
+        function endGame() {
+            isGameOver = true;
+            alert('Game over!');
+            // You can add more actions here, like restarting the game or showing the final score
+        }
+
+        // Function to start the game
+        function startGame() {
+            setInterval(createObstacle, 2000); // Create obstacles every 2 seconds
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Space') {
+                jump();
+            }
+        });
+
+        startGame(); // Start the game
+    </script>
+</body>
+</html>

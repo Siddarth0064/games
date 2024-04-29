@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .game-box {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .game-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .game-name {
+            font-size: 24px;
+            color: #007bff;
+        }
+        .website-name {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="website-name">GamesWorld</div>
+    <div class="container">
+        <div class="game-box" onclick="goToGame('tictactoe.html')">
+            <span class="game-name">Tic Tac Toe</span>
+        </div>
+        
+         <div class="game-box" onclick="goToGame('floppybird.html')">
+            <span class="game-name">Flappy Bird</span>
+         </div>
+         
+          <div class="game-box" onclick="goToGame('snakehome.html')">
+            <span class="game-name">Snake</span>
+         </div>
+        <!-- Add more game boxes here -->
+    </div>
+
+    <script>
+        function goToGame(url) {
+            // Redirect to the specified game page
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

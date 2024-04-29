@@ -1,0 +1,65 @@
+/* pacman.css */
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#game-board {
+    width: 448px;
+    height: 496px;
+    margin: 0 auto;
+    background-color: black;
+    position: relative;
+}
+
+.square {
+    width: 32px;
+    height: 32px;
+    float: left;
+}
+
+.wall {
+    background-color: blue;
+}
+
+.dot {
+    background-color: white;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 10px;
+}
+
+.pacman, .ghost {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+}
+
+.pacman {
+    background-color: yellow;
+    border-radius: 50%;
+    clip-path: polygon(25% 25%, 100% 50%, 25% 75%);
+}
+
+.ghost {
+    border-radius: 50%;
+}
+
+.ghost-red {
+    background-color: red;
+}
+
+.ghost-blue {
+    background-color: blue;
+}
+
+.ghost-pink {
+    background-color: pink;
+}
+
+.ghost-orange {
+    background-color: orange;
+}

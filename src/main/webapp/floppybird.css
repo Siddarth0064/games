@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+canvas {
+            background-color: #b3e0ff; /* Light blue background */
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #000; /* Black border */
+            border-radius: 10px;
+        }
+       
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #score {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #333; /* Dark gray color */
+        }
+body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #b3e0ff; /* Light blue background */
+        }
+        canvas {
+            background-color: #b3e0ff; /* Light blue background */
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #000; /* Black border */
+            border-radius: 10px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Align buttons to the right */
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px; /* Add some space between buttons */
+        }
+        .button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        #score {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #333; /* Dark gray color */
+        }

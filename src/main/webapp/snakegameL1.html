@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const gridSize = 20;
+        const gridWidth = canvas.width / gridSize;
+        const gridHeight = canvas.height / gridSize;
+
+        let snake = [{ x: 10, y: 10 }];
+        let foods = [
+            { x: Math.floor(Math.random() * gridWidth), y: Math.floor(Math.random() * gridHeight), points: 1 },
+            { x: Math.floor(Math.random() * gridWidth), y: Math.floor(Math.random() * gridHeight), points: 5 }
+        ];
+        let dx = 0;
+        let dy = 0;
+        let score = 0;
+
+        function drawSnake() {
+            ctx.fillStyle = 'green';
+            snake.forEach((segment) => {
+                ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
+            });
+        }
+
+        function drawFood() {
+            foods.forEach(food => {
+                ctx.fillStyle = food.points === 1 ? 'red' : 'purple';
+                ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+            });
+        }
+
+        function moveSnake() {
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+            snake.unshift(head);
+
+            let eatenFoodIndex = -1;
+            foods.forEach((food, index) => {
+                if (head.x === food.x && head.y === food.y) {
+                    score += food.points;
+                    eatenFoodIndex = index;
+                }
+            });
+
+            if (eatenFoodIndex > -1) {
+                foods.splice(eatenFoodIndex, 1);
+                foods.push({ x: Math.floor(Math.random() * gridWidth), y: Math.floor(Math.random() * gridHeight), points: Math.random() > 0.5 ? 1 : 5 });
+            } else {
+                snake.pop();
+            }
+        }
+
+        function checkCollision() {
+            if (snake[0].x < 0 || snake[0].x >= gridWidth || snake[0].y < 0 || snake[0].y >= gridHeight) {
+                return true;
+            }
+            for (let i = 1; i < snake.length; i++) {
+                if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function drawScore() {
+            ctx.fillStyle = 'black';
+            ctx.font = '20px Arial';
+            ctx.fillText('Score: ' + score, 10, 30);
+        }
+
+        function mainLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawSnake();
+            drawFood();
+            drawScore();
+            moveSnake();
+
+            if (checkCollision()) {
+                //alert('Game Over! Your score: ' + score);
+                displayGameOver()
+                resetGame();
+                return;
+            }
+
+            setTimeout(mainLoop, 100);
+        }
+
+        function resetGame() {
+            snake = [{ x: 10, y: 10 }];
+            foods = [
+                { x: Math.floor(Math.random() * gridWidth), y: Math.floor(Math.random() * gridHeight), points: 1 },
+                { x: Math.floor(Math.random() * gridWidth), y: Math.floor(Math.random() * gridHeight), points: 5 }
+            ];
+            dx = 0;
+            dy = 0;
+            score = 0;
+            mainLoop();
+        }
+
+        document.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 'ArrowUp':
+                    if (dy !== 1) {
+                        dx = 0;
+                        dy = -1;
+                    }
+                    break;
+                case 'ArrowDown':
+                    if (dy !== -1) {
+                        dx = 0;
+                        dy = 1;
+                    }
+                    break;
+                case 'ArrowLeft':
+                    if (dx !== 1) {
+                        dx = -1;
+                        dy = 0;
+                    }
+                    break;
+                case 'ArrowRight':
+                    if (dx !== -1) {
+                        dx = 1;
+                        dy = 0;
+                    }
+                    break;
+            }
+        });
+
+        function displayGameOver() {
+            alert('Game Over, ' + username + '! Your score: ' + score);
+            resetGame();
+        }
+
+        mainLoop();
+    </script>
+</body>
+</html>

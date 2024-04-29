@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <label for="level">Choose a level:</label>
+    <select id="level">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+    <br>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const levelSelector = document.getElementById('level');
+        let gameSpeed;
+        let gameInterval;
+
+        function startGame() {
+            const level = levelSelector.value;
+            if (level === 'easy') {
+                window.location.href = 'snakegameL3.html';
+            } else if (level === 'medium') {
+                window.location.href = 'snakegameL2.html';
+            } else if (level === 'hard') {
+                window.location.href = 'snakegameL1.html';
+            }
+        }
+
+        levelSelector.addEventListener('change', function() {
+            clearInterval(gameInterval);
+            startGame();
+        });
+    </script>
+</body>
+</html>

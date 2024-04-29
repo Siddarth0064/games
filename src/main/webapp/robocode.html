@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboCode</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .robot {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: relative;
+        }
+        .bullet {
+            width: 5px;
+            height: 5px;
+            background-color: black;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="robot"></div>
+
+    <script>
+        const robot = document.querySelector('.robot');
+
+        let x = 0;
+        let y = 0;
+        let angle = 0;
+        let bullets = [];
+
+        function moveRobot() {
+            robot.style.transform = `translate(${x}px, ${y}px) rotate(${angle}deg)`;
+        }
+
+        function fireBullet() {
+            const bullet = document.createElement('div');
+            bullet.classList.add('bullet');
+            bullet.style.left = `${x + 25}px`;
+            bullet.style.top = `${y + 25}px`;
+            document.body.appendChild(bullet);
+            bullets.push({ x: x, y: y, angle: angle });
+        }
+
+        function updateBullets() {
+            bullets.forEach((bullet, index) => {
+                bullet.x += Math.cos((bullet.angle * Math.PI) / 180) * 5;
+                bullet.y += Math.sin((bullet.angle * Math.PI) / 180) * 5;
+                const bulletElement = document.querySelectorAll('.bullet')[index];
+                bulletElement.style.left = `${bullet.x}px`;
+                bulletElement.style.top = `${bullet.y}px`;
+            });
+        }
+
+        function gameLoop() {
+            moveRobot();
+            updateBullets();
+            requestAnimationFrame(gameLoop);
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowUp') {
+                y -= 5;
+            } else if (event.key === 'ArrowDown') {
+                y += 5;
+            } else if (event.key === 'ArrowLeft') {
+                angle -= 5;
+            } else if (event.key === 'ArrowRight') {
+                angle += 5;
+            } else if (event.key === ' ') {
+                fireBullet();
+            }
+        });
+
+        gameLoop();
+    </script>
+</body>
+</html>
